@@ -9,8 +9,8 @@
 In your terminal, navigate to the folder where ```stereo-formatting.py``` and ```devices.txt``` is located.
   
 ### Formatting an image
-```python3 stereo-formatting.py -f <path to image> "<device name>" [optional: output file name ending in .jpg]```
-  
+```python3 stereo-formatting.py -f <path to image> "<device name>" [optional: output file name ending in .jpg]```  
+  Images must be jpg.  
   Device names can be found in ```devices.txt``` followed by their device width, device height, effective width, and effective height. 
 
 ### Adding a device profile
