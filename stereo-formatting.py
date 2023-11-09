@@ -1,6 +1,7 @@
 import sys
 import subprocess
 import os.path
+import re
 
 DEVICES = {}
 
@@ -50,17 +51,17 @@ def get_image_size(image_file):
         image_file,
     ], capture_output=True)
 
-    # parse result
     result = result.stdout.decode('utf-8')
-    result = result.split(' ')
-    result = result[2].split('x')
-    result = {
-        'width': int(result[0]),
-        'height': int(result[1]),
-    }
+    match = re.search(r'(\d+)x(\d+)', result)
+    if match:
+        width = match.group(1)
+        return {
+            'width': int(match.group(1)),
+            'height': int(match.group(2))
+        }
 
-    return result
-
+    print("Error: Cannot get image size")
+    sys.exit(1)
 
 def resize_image(image_file, dimension, val, output_file):
     if dimension == 'width':
@@ -277,8 +278,8 @@ def start():
             # get output file name if user specified one
             file = ""
             if len(sys.argv) == 5:
-                if sys.argv[4].count('.') != 1 or sys.argv[4].split('.')[1] != 'jpg':
-                    print("Invalid output file name")
+                if sys.argv[4].count('.') != 1 or sys.argv[4].split('.')[1].lower() != 'jpg':
+                    print("Output file name should be [name].jpg")
                     return
                 file = format_stereo(img, device, sys.argv[4])
             else:
