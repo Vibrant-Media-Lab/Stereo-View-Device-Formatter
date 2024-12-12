@@ -42,4 +42,5 @@ pip3 install -r requirements.txt
 sleep 1s
 
 echo "Stereo Format is setup is complete!"
-echo "Please run \"python3 app.py\" to start the server on your machine"
+echo "Deploying Stereo Device View Formatter on local"
+python3 app.py
