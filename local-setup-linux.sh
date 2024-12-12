@@ -2,7 +2,7 @@
 
 # Check if Python 3 is already installed
 echo "Checking for Python installation"
-if command -v python3 &> /dev/null; then
+if command -V python3 &> /dev/null; then
     echo "Python 3 is already installed."
 else
     # Update the package index
