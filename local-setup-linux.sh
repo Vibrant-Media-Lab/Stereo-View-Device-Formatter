@@ -38,6 +38,8 @@ fi
 sleep 1s
 
 echo "Installing the dependencies for Stereo Format App"
+python3 -m venv stereoformatvenv
+source stereoformatvenv/bin/activate
 pip3 install -r requirements.txt
 sleep 1s
 
