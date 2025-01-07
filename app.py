@@ -118,7 +118,12 @@ def run_image(file, device, output_fname):
             output_fname
         ])
     except subprocess.CalledProcessError as e:
-        print(f"Error: {e.stderr}")
+        with open("error_log.txt", "a") as log_file:
+            log_file.write(f"Command: {e.cmd}\n")
+            log_file.write(f"Return Code: {e.returncode}\n")
+            log_file.write(f"Standard Output: {e.stdout}\n")
+            log_file.write(f"Standard Error: {e.stderr}\n")
+            log_file.write("\n---\n")  # Separate log entries for readability.
 
     # NEED TO CHECK FOR ERRORS HERE
     res = res.decode()
