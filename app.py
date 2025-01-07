@@ -108,16 +108,15 @@ def get_devices():
 
 def run_image(file, device, output_fname):
     script = UPLOAD_FOLDER + "/" + SF_FILE
-    env = os.environ.copy()
     try:
         res = subprocess.check_output([
-            'python3',
+            '/usr/bin/python3',
             script,
             '-f',
             file,
             device,
             output_fname
-        ], env=env, cwd=os.getcwd())
+        ])
     except subprocess.CalledProcessError as e:
         with open("error_log.txt", "a") as log_file:
             log_file.write(f"Command: {e.cmd}\n")
