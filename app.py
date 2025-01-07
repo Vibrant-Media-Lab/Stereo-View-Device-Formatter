@@ -108,15 +108,17 @@ def get_devices():
 
 def run_image(file, device, output_fname):
     script = UPLOAD_FOLDER + "/" + SF_FILE
-
-    res = subprocess.check_output([
-        'python3',
-        script,
-        '-f',
-        file,
-        device,
-        output_fname
-    ])
+    try:
+        res = subprocess.check_output([
+            'python3',
+            script,
+            '-f',
+            file,
+            device,
+            output_fname
+        ])
+    except subprocess.CalledProcessError as e:
+        print(f"Error: {e.stderr}")
 
     # NEED TO CHECK FOR ERRORS HERE
     res = res.decode()
