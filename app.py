@@ -117,7 +117,7 @@ def run_image(file, device, output_fname):
             file,
             device,
             output_fname
-        ], env=env)
+        ], env=env, cwd=os.getcwd())
     except subprocess.CalledProcessError as e:
         with open("error_log.txt", "a") as log_file:
             log_file.write(f"Command: {e.cmd}\n")
