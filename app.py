@@ -123,6 +123,7 @@ def run_image(file, device, output_fname):
             log_file.write(f"Return Code: {e.returncode}\n")
             log_file.write(f"Standard Output: {e.stdout}\n")
             log_file.write(f"Standard Error: {e.stderr}\n")
+            log_file.write(f"CWD: {os.getcwd()}\n")
             log_file.write("\n---\n")  # Separate log entries for readability.
 
     # NEED TO CHECK FOR ERRORS HERE
