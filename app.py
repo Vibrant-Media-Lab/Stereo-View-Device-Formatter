@@ -110,7 +110,7 @@ def run_image(file, device, output_fname):
     script = UPLOAD_FOLDER + "/" + SF_FILE
 
     res = subprocess.check_output([
-        'python3',
+        'python',
         script,
         '-f',
         file,
