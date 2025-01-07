@@ -110,7 +110,7 @@ def run_image(file, device, output_fname):
     script = UPLOAD_FOLDER + "/" + SF_FILE
     try:
         res = subprocess.check_output([
-            '/usr/bin/python3',
+            'vmlvenv/bin/python3',
             script,
             '-f',
             file,
