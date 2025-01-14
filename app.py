@@ -108,23 +108,14 @@ def get_devices():
 
 def run_image(file, device, output_fname):
     script = UPLOAD_FOLDER + "/" + SF_FILE
-    try:
-        res = subprocess.check_output([
-            'vmlvenv/bin/python3',
-            script,
-            '-f',
-            file,
-            device,
-            output_fname
-        ])
-    except subprocess.CalledProcessError as e:
-        with open("error_log.txt", "a") as log_file:
-            log_file.write(f"Command: {e.cmd}\n")
-            log_file.write(f"Return Code: {e.returncode}\n")
-            log_file.write(f"Standard Output: {e.stdout}\n")
-            log_file.write(f"Standard Error: {e.stderr}\n")
-            log_file.write(f"CWD: {os.getcwd()}\n")
-            log_file.write("\n---\n")  # Separate log entries for readability.
+    res = subprocess.check_output([
+        '/usr/bin/python3',
+        script,
+        '-f',
+        file,
+        device,
+        output_fname
+    ])
 
     # NEED TO CHECK FOR ERRORS HERE
     res = res.decode()
