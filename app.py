@@ -109,7 +109,7 @@ def get_devices():
 def run_image(file, device, output_fname):
     script = UPLOAD_FOLDER + "/" + SF_FILE
     res = subprocess.check_output([
-        '/usr/bin/python3',
+        'python3',
         script,
         '-f',
         file,
